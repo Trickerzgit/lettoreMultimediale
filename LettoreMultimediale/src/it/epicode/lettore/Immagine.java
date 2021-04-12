@@ -2,10 +2,19 @@ package it.epicode.lettore;
 
 public class Immagine extends ElementoMultimediale implements ElementoConLuminositaRegolabile {
 	
-	private int luminosita;
+	protected int luminosita;
 
-	public Immagine(String titolo) {
+	public Immagine(String titolo, int luminosita) {
 		super(titolo);
+		this.luminosita = luminosita;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("Immagine titolo:");
+		sb.append(titolo)
+		.append(" luminosita: ").append(luminosita);
+		return sb.toString();
 	}
 
 	@Override
@@ -37,6 +46,10 @@ public class Immagine extends ElementoMultimediale implements ElementoConLuminos
 		}
 		System.out.println(s);
 		
+	}
+	
+	public void esegui() {
+		show();
 	}
 
 }

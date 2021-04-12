@@ -2,8 +2,8 @@ package it.epicode.lettore;
 
 public abstract class ElementoMultimedialeRiproducibile extends ElementoMultimediale {
 	
-	private int durata;
-	private int volume;
+	protected int durata;
+	protected int volume;
 	private final int maxVolume = 10;
 		
 	public ElementoMultimedialeRiproducibile(String titolo, int durata, int volume) {
@@ -13,26 +13,28 @@ public abstract class ElementoMultimedialeRiproducibile extends ElementoMultimed
 	
 	}
 	
-	public void play() {
-		
+	public abstract void play();
+	
+	public void esegui() {
+		play();
 	}
 	
-	public void abbassaVolume(int volume) {
-		if (volume <= 0) {
-			return;
-		}
-		else {
+	public void abbassaVolume() {
+		if (volume > 0) {
 			volume--;
 		}
+		else {
+			System.out.println("Il volume è già al minimo.");
+		}
 		
 	}
 	
-	public void alzaVolume (int volume) {
+	public void alzaVolume () {
 		if (volume < maxVolume) {
-			++volume;
+			volume++;
 		}
 		else {
-			return;
+			System.out.println("Il volume è già al massimo.");
 		}
 	}
 	
